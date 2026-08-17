@@ -55,7 +55,7 @@ public class CommentResource extends BaseResource {
         
         // Validate input data
         ValidationUtil.validateRequired(documentId, "id");
-        content = ValidationUtil.validateLength(content, "content", 1, 4000, false);
+        content = ValidationUtil.validateLength(content, "content", 1, 10000000, false);
         
         // Read access on doc gives access to write comments 
         AclDao aclDao = new AclDao();
