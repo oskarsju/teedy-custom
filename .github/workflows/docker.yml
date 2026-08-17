@@ -18,6 +18,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build Teedy with Maven
+        run: mvn -B clean package -DskipTests
+
+      - name: Verify Teedy build
+        run: ls -la docs-web/target/
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
